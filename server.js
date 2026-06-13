@@ -1,6 +1,7 @@
 console.log("XXXXXXXXXXXX NEW VERSION XXXXXXXX");
-const express = require('express');
-const cors = require('cors');
+
+const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 
 const Contact = require("./models/Contact");
@@ -9,13 +10,13 @@ const Reservation = require("./models/Reservation");
 const app = express();
 
 /* MONGODB CONNECTION */
-mongoose.connect("mongodb://127.0.0.1:27017/tastythai")
-  .then(() => {
-    console.log("MongoDB Connected");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+  console.log("MongoDB Connected");
+})
+.catch((err) => {
+  console.log(err);
+});
 
 /* MIDDLEWARE */
 app.use(cors());
